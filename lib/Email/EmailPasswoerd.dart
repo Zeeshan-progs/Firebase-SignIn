@@ -75,7 +75,17 @@ class _EmailPasswordSignInState extends State<EmailPasswordSignIn> {
   }
 
   /*
+  
+  
+  
+  
+  
        ##############        Custom Methods      #############
+  
+  
+  
+  
+  
   */
 
   // Password Field Icon
