@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'Anonymous/Anonymous.dart';
+import 'Email Password/EmailPasswoerd.dart';
 
 
 class MainScreen extends StatefulWidget {
@@ -32,6 +33,12 @@ class _MainScreenState extends State<MainScreen> {
               text: 'Anonymous Sign In',
               onClick: anonymous,
               color: Colors.blueGrey[800],
+            ),
+            buildRaisedButton(
+              icon: FontAwesomeIcons.google,
+              text: 'Google Sign In ',
+              onClick: google,
+              color: Colors.purple[900],
             ),
           ],
         ),
@@ -86,12 +93,22 @@ class _MainScreenState extends State<MainScreen> {
 
   void email() {
     setState(() {
-      // Navigator.push(
-      //   context,
-      //   MaterialPageRoute(
-      //     builder: (context) => EmailPasswordSignIn(),
-      //   ),
-      // );
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => EmailPasswordSignIn(),
+        ),
+      );
+    });
+  }
+  void google() async{
+    setState(() {
+        Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => EmailPasswordSignIn(),
+        ),
+      );
     });
   }
 }
