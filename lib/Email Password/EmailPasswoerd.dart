@@ -1,8 +1,8 @@
+import 'package:firebaseauth/AppBarWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import 'App_Bar.dart';
 import 'Logout.dart';
 
 GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -22,9 +22,11 @@ class _EmailPasswordSignInState extends State<EmailPasswordSignIn> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.redAccent,
         elevation: 0,
-        title: AppBarData(),
+        title: AppBarWidget(
+          text: 'Email Password Login',
+          icon: FontAwesomeIcons.mailBulk,
+        ),
       ),
       body: Form(
         key: _formKey,
