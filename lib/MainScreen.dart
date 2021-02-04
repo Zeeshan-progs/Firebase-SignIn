@@ -5,7 +5,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'Anonymous/Anonymous.dart';
 import 'Email Password/EmailPasswoerd.dart';
 
-
 class MainScreen extends StatefulWidget {
   @override
   _MainScreenState createState() => _MainScreenState();
@@ -34,6 +33,7 @@ class _MainScreenState extends State<MainScreen> {
               onClick: anonymous,
               color: Colors.blueGrey[800],
             ),
+            SizedBox(height: 30),
             buildRaisedButton(
               icon: FontAwesomeIcons.google,
               text: 'Google Sign In ',
@@ -101,9 +101,10 @@ class _MainScreenState extends State<MainScreen> {
       );
     });
   }
-  void google() async{
+
+  void google() async {
     setState(() {
-        Navigator.push(
+      Navigator.push(
         context,
         MaterialPageRoute(
           builder: (context) => EmailPasswordSignIn(),

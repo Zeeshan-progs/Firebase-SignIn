@@ -18,6 +18,7 @@ class EmailPasswordSignIn extends StatefulWidget {
 
 class _EmailPasswordSignInState extends State<EmailPasswordSignIn> {
   bool hide = true;
+  bool isLoading = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,11 +64,12 @@ class _EmailPasswordSignInState extends State<EmailPasswordSignIn> {
                 ),
                 RaisedButton(
                   onPressed: () async {
-                    dynamic result = await login();
-                    return result.toString();
+                    dynamic user = login();
+
+                    return user.toString();
                   },
-                  child: Text('Log In '),
-                ),
+                  child: Text('Login'),
+                )
               ],
             ),
           ],
@@ -120,6 +122,7 @@ class _EmailPasswordSignInState extends State<EmailPasswordSignIn> {
                 ),
               ),
             ));
+
         return user;
       } on FirebaseAuthException catch (e) {
         if (e.code == 'invalid-email') {
