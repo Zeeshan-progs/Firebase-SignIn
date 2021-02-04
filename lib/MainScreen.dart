@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-
+import 'Google/google.dart';
 import 'Anonymous/Anonymous.dart';
 import 'Email Password/EmailPasswoerd.dart';
 
@@ -107,7 +107,7 @@ class _MainScreenState extends State<MainScreen> {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => EmailPasswordSignIn(),
+          builder: (context) => GoogleScreen(),
         ),
       );
     });

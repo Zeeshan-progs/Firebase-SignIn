@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 import '../AppBarWidget.dart';
 
-class GoogleSignIn extends StatefulWidget {
+class GoogleScreen extends StatefulWidget {
   @override
-  _GoogleSignInState createState() => _GoogleSignInState();
+  _GoogleScreenState createState() => _GoogleScreenState();
 }
 
-class _GoogleSignInState extends State<GoogleSignIn> {
+class _GoogleScreenState extends State<GoogleScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
