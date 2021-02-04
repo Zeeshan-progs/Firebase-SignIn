@@ -38,7 +38,11 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               ),
               Text(userName),
               OutlineButton(
-                onPressed: logout,
+                onPressed: () {
+                  signOutGoogle().then(
+                    (value) => Navigator.pop(context),
+                  );
+                },
                 child: Text('Log Out '),
               ),
             ],
@@ -46,13 +50,5 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
         ),
       ),
     );
-  }
-
-  Future logout() async {
-    try {
-      await googleSignIn.signOut().then((value) => Navigator.pop(context));
-    } on FirebaseAuthException catch (e) {
-      print(e.code.toUpperCase());
-    }
   }
 }
