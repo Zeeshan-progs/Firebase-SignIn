@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-
+import 'package:firebaseauth/Custompackages.dart';
 class LogOutScreen extends StatefulWidget {
   @override
   _LogOutScreenState createState() => _LogOutScreenState();

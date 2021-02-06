@@ -1,4 +1,4 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebaseauth/Custompackages.dart';
 
 class ClickToLogin {
   FirebaseAuth auth = FirebaseAuth.instance;

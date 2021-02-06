@@ -8,6 +8,9 @@ export 'Google/WelcomePage.dart';
 export 'Google/google.dart';
 // email And Password Sign IN
 export 'Email Password/Logout.dart';
+
+//
+export 'MainScreen.dart';
 export 'AppBarWidget.dart';
 
 // facebook sign in
