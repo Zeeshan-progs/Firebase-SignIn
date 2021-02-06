@@ -1,9 +1,10 @@
+import 'package:firebaseauth/Facebook/facebookScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'Google/google.dart';
 import 'Anonymous/Anonymous.dart';
-import 'Email Password/EmailPasswoerd.dart';
+import 'Email Password/EmailPassword.dart';
 
 class MainScreen extends StatefulWidget {
   @override
@@ -40,6 +41,13 @@ class _MainScreenState extends State<MainScreen> {
               onClick: google,
               color: Colors.purple[900],
             ),
+            SizedBox(height: 20),
+            buildRaisedButton(
+              icon: FontAwesomeIcons.facebook,
+              text: 'Facebook',
+              color: Colors.blue,
+              onClick: facebook,
+            ),
           ],
         ),
       ),
@@ -55,14 +63,14 @@ class _MainScreenState extends State<MainScreen> {
     return RaisedButton(
       elevation: 4,
       onPressed: onClick,
-      padding: EdgeInsets.symmetric(vertical: 10),
+      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           FaIcon(
             icon,
             size: 36,
           ),
+          SizedBox(width: 30),
           Text(
             text,
             style: GoogleFonts.cookie(
@@ -108,6 +116,17 @@ class _MainScreenState extends State<MainScreen> {
         context,
         MaterialPageRoute(
           builder: (context) => GoogleScreen(),
+        ),
+      );
+    });
+  }
+
+  void facebook() async {
+    setState(() {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => FacebookLogin(),
         ),
       );
     });
