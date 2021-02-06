@@ -1,57 +1,61 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+// lets define Login Methods  And Logins
 
-final FirebaseAuth _auth = FirebaseAuth.instance;
+final FirebaseAuth auth = FirebaseAuth.instance; // instance will be final
 final GoogleSignIn googleSignIn = GoogleSignIn();
 
-String email, imgUrl, userName;
-FirebaseAuth auth = FirebaseAuth.instance;
+// create some global variable to store data and use it further
 
-Future<String> signInWithGoogle() async {
-  final GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
-  final GoogleSignInAuthentication googleSignInAuthentication =
-      await googleSignInAccount.authentication;
+String email, userName, imgUrl;
 
-  final AuthCredential credential = GoogleAuthProvider.credential(
-    accessToken: googleSignInAuthentication.accessToken,
-    idToken: googleSignInAuthentication.idToken,
-  );
+// SignIn Method
 
-  final UserCredential authResult =
-      await _auth.signInWithCredential(credential);
-  final User user = authResult.user;
+Future signInWithGoogle() async {
+  try {
+    final GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
+    final GoogleSignInAuthentication googleSignInAuthentication =
+        await googleSignInAccount.authentication;
+    final AuthCredential credential = GoogleAuthProvider.credential(
+      idToken: googleSignInAuthentication.idToken,
+      accessToken: googleSignInAuthentication.accessToken,
+    );
+    final UserCredential authResult =
+        await auth.signInWithCredential(credential);
+    final User user = authResult.user;
+    // now to check if ther is a user data stored or not by using user variable
 
-  if (user != null) {
-    // Checking if email and name is null
-    assert(user.email != null);
-    assert(user.displayName != null);
-    assert(user.photoURL != null);
+    if (user != null) {
+      assert(user.email != null);
+      assert(user.displayName != null);
+      assert(user.photoURL != null);
+      // assert use to check user data validation of account
+      // after that lets store data into variable we predefines
 
-    userName = user.displayName;
-    email = user.email;
-    imgUrl = user.photoURL;
-
-    // Only taking the first part of the name, i.e., First Name
-    if (userName.contains(" ")) {
-      userName = userName.substring(0, userName.indexOf(" "));
+      email = user.email;
+      userName = user.displayName;
+      imgUrl = user.photoURL;
+      // to confirm that if userName is not given by user
+      if (userName.contains(" ")) {
+        userName = userName.substring(0, userName.indexOf(" "));
+      }
+      assert(!user.isAnonymous);
+      assert(await user.getIdToken() != null);
+      print('Successfully Loged in ');
+      return user;
     }
-
-    assert(!user.isAnonymous);
-    assert(await user.getIdToken() != null);
-
-    final User currentUser = _auth.currentUser;
-    assert(user.uid == currentUser.uid);
-
-    print('signInWithGoogle succeeded: $user');
-
-    return '$user';
+  } on FirebaseAuthException catch (e) {
+    print(e.code.toUpperCase());
   }
-
   return null;
 }
 
-Future<void> signOutGoogle() async {
-  await googleSignIn.signOut();
-
-  print("User Signed Out");
+// LogOut Method
+Future signOutWithGoogle() async {
+  try {
+    await googleSignIn.signOut();
+    print('Signed Out ');
+  } on FirebaseAuthException catch (e) {
+    print(e.code.toUpperCase());
+  }
 }

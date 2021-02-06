@@ -4,7 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 class AppBarWidget extends StatelessWidget {
   const AppBarWidget({
     Key key,
-    this.text,
+    this.text='',
     this.icon,
   }) : super(key: key);
   final String text;
